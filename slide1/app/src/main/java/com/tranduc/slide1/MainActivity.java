@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainContact{
     private TextView tvView;
 
     @Override
@@ -24,7 +24,12 @@ public class MainActivity extends AppCompatActivity {
 
         tvView = (TextView) findViewById(R.id.tvView);
 
-        MyTask myClass = new MyTask(tvView);
+        MyTask myClass = new MyTask(tvView, this);
         myClass.execute("http://docbao.vn");
+    }
+
+    @Override
+    public void onCompleted(Object s, Object o) {
+        tvView.setText((String) s + o);
     }
 }

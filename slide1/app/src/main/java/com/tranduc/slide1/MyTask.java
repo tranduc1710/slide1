@@ -13,9 +13,11 @@ import java.util.Scanner;
 
 public class MyTask  extends AsyncTask<String, Long, String> {
     private TextView tvView;
+    private MainContact mainContact;
 
-    public MyTask(TextView tvView) {
+    public MyTask(TextView tvView, MainContact mainContact) {
         this.tvView = tvView;
+        this.mainContact = mainContact;
     }
 
     @Override
@@ -48,6 +50,6 @@ public class MyTask  extends AsyncTask<String, Long, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        tvView.setText(s);
+        mainContact.onCompleted(s, s);
     }
 }
